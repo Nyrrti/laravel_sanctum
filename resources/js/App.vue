@@ -1,5 +1,10 @@
+<script setup lang="ts">
+
+import Nav from './components/Nav.vue';
+
+</script>
+
 <template>
-    <h1>
-        Hello World!
-    </h1>
+    <Nav />
+    <router-view></router-view>
 </template>

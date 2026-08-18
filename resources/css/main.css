@@ -1,7 +1,9 @@
 
 :root {
     --bg-color-white: #ebebeb;
+    --bg-color-nav: #31365c;
  
+    
     --color-dark-blue: #15568a;
     --color-light-blue: #77a1ea;
     --color-purple: #52449c;
@@ -17,6 +19,7 @@
     --table-title-dark: #075663;
     --table-border: #768db0;
 
+    --font-color-nav: #bac8ec;
     --font-color-light: #c1dcff;
     --font-color-dark: #27282c;
     --font-color-medium: #40444b;
@@ -34,8 +37,8 @@
 
     --gradient-bg: linear-gradient(
         180deg,
-        rgb(79, 57, 165) 0%,
-        rgb(51, 98, 173) 75%
+        rgb(135, 60, 167) 0%,
+        rgb(76, 74, 193) 75%
     );
 }
 
@@ -151,7 +154,7 @@ a.item-link {
 }
 
 .bg-color {
-  background-color: var(--bg-color-white);
+    background-color: var(--bg-color-white);
 }
 
 .light {
