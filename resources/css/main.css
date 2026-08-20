@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
     --bg-color-white: #ebebeb;
     --bg-color-nav: #31365c;
  
-    
+    --color-yellow:#c69033;
     --color-dark-blue: #15568a;
     --color-light-blue: #77a1ea;
     --color-purple: #52449c;
@@ -19,7 +20,7 @@
     --table-title-dark: #075663;
     --table-border: #768db0;
 
-    --font-color-nav: #bac8ec;
+    --font-color-nav: #161d2f;
     --font-color-light: #c1dcff;
     --font-color-dark: #27282c;
     --font-color-medium: #40444b;
@@ -29,10 +30,11 @@
     --font-size-xsm: 0.95rem;
     --font-size-sm: 1rem;
     --font-size-md: 1.05rem;
-    --font-size-lg: 1.7rem;
-    --font-size-xl: 2rem;
+    --font-size-lg: 1.3rem;
+    --font-size-xl: 1.7rem;
+    --font-size-xxl: 2rem;
 
-    --font-family-title: 'Poppins', serif;
+    --font-family-title: 'Inter', sans-serif;
     --font-family-body: 'Roboto', sans-serif;
 
     --gradient-bg: linear-gradient(
@@ -69,7 +71,7 @@ background: radial-gradient(circle,#f2f2ed 40%, #e3e3de 100%);
 }
 
 .sub-title {
-    margin-top: -1rem;
+    margin-top: -0.45rem;
 }
 
 h1,h2,h3,h4,h5 {
@@ -80,12 +82,12 @@ h1,h2,h3,h4,h5 {
 }
 
 h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     text-transform: uppercase;
 }
 
 h2 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     text-transform: uppercase;
     margin: 0.2rem 0rem;
 }
@@ -94,10 +96,19 @@ h2.color {
     color: var(--color-dark-blue);
 }
 
+h2.sub-title {
+    color: var(--color-light-grey);
+}
+
 h3 {
     font-size: var(--font-size-lg);
     text-transform: uppercase;
     letter-spacing: 0.05rem;
+}
+
+h3.sub-title {
+    color: var(--color-light-grey);
+    font-weight: 500;
 }
 
 h4 {
@@ -179,19 +190,6 @@ a.item-link {
 .text-muted {
     color: var(--font-color-medium);
     font-size: var(--font-size-sm);
-}
-
-.nav-bar {
-    height:6rem;
-    background-color: var(--color-dark-purple);
-    z-index: 10;
-    box-shadow: rgba(37, 117, 175, 0.25) 0px 5px 10px -5px, rgba(38, 113, 165, 0.3) 0px 8px 64px -8px;
-}
-
-li.nav {
-    min-width: 4.5rem;
-    padding: 0.9rem 1.1rem;
-    text-align: center;
 }
 
 .logo-box {
