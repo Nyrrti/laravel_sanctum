@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 :root {
     --bg-color-white: #ebebeb;
-    --bg-color-nav: #31365c;
+    --bg-color-nav:  rgba(8, 27, 59, 0.7);
+    --bg-color-header: rgb(25, 54, 81);
  
-    --color-yellow:#c69033;
+    --color-yellow:#eea933;
+    --color-orange: #ff921e;
     --color-dark-blue: #15568a;
     --color-light-blue: #77a1ea;
-    --color-purple: #52449c;
+    --color-purple: #8d2de1;
     --color-dark-purple: #4a1774;
-    --color-cyan: #52d7c5;
+    --color-cyan: #00a7c9;
     --color-light-grey:#bbbcc5;
     --color-medium-grey: #c0c1c3;
     --color-light-red: #d08383;
@@ -20,27 +22,28 @@
     --table-title-dark: #075663;
     --table-border: #768db0;
 
-    --font-color-nav: #161d2f;
-    --font-color-light: #c1dcff;
-    --font-color-dark: #27282c;
-    --font-color-medium: #40444b;
-    --font-color-title-light: #26b1dc;
-    --font-color-title-dark: #066582;
+    --font-color-nav: #edeae0;
+    --font-color-light: #daebff;
+    --font-color-dark: #28292f;
+    --font-color-medium: #a2b2c4;
+    --font-color-title-light: #41c4ef;
+    --font-color-title-dark: #907c22;
 
+    --font-size-xxs: 0.9rem;
     --font-size-xsm: 0.95rem;
     --font-size-sm: 1rem;
-    --font-size-md: 1.05rem;
-    --font-size-lg: 1.3rem;
-    --font-size-xl: 1.7rem;
-    --font-size-xxl: 2rem;
+    --font-size-md: 1.1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.3rem;
+    --font-size-xxl: 1.6rem;
 
-    --font-family-title: 'Inter', sans-serif;
+    --font-family-title: 'Roboto Slab', serif;
     --font-family-body: 'Roboto', sans-serif;
 
     --gradient-bg: linear-gradient(
         180deg,
-        rgb(135, 60, 167) 0%,
-        rgb(76, 74, 193) 75%
+        rgb(246, 246, 246) 0%,
+        rgb(239, 239, 239) 75%
     );
 }
 
@@ -70,13 +73,15 @@ background: radial-gradient(circle,#f2f2ed 40%, #e3e3de 100%);
     display: none;
 }
 
-.sub-title {
-    margin-top: -0.45rem;
+.sub-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem
 }
 
 h1,h2,h3,h4,h5 {
     font-family: var(--font-family-title);
-    font-weight: 700;
+    font-weight: 500;
     color: var(--font-color-dark);
     margin: 0;
 }
@@ -84,6 +89,7 @@ h1,h2,h3,h4,h5 {
 h1 {
     font-size: var(--font-size-xxl);
     text-transform: uppercase;
+    letter-spacing: 0.02rem;
 }
 
 h2 {
@@ -101,14 +107,17 @@ h2.sub-title {
 }
 
 h3 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
     text-transform: uppercase;
     letter-spacing: 0.05rem;
 }
 
 h3.sub-title {
-    color: var(--color-light-grey);
+    font-family: var(--font-family-body);
+    color: var(--font-color-medium);
     font-weight: 500;
+    line-height: 1rem;
+    padding-left: 0.1rem;
 }
 
 h4 {
@@ -311,8 +320,8 @@ li {
     border: 1px solid var(--color-grey);
 }
 
-.border-left {
-    border-left: 6px solid var(--color-cyan);
+.border-block-left {
+    border-left: 6px solid var(--color-orange);
 }
 
 .border-right {
@@ -421,11 +430,19 @@ tbody tr:hover {
     align-items: center;
 }
 
+@media (min-width: 1600px) {
+    :root {
+        --font-size-xsm: 1rem;
+        --font-size-sm: 1.05rem;
+        --font-size-md: 1.25rem;
+        --font-size-lg: 1.35rem;
+        --font-size-xl: 1.8rem;
+        --font-size-xxl: 2rem;
+    }
+}
+
 /* Extra large devices (extra large laptops and desktops, 2000px and up) */
 @media only screen and (min-width: 2000px) {
    
-    .nav-bar {
-        height: 6.25rem;
-    }
 }
 

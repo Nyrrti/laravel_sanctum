@@ -1,8 +1,6 @@
 <template>
-    <div class="banner text-center">
+    <div class="grid-container-fluid banner text-center">
         <div class="banner-placeholder">
-            <h1>Image</h1>
-
             <svg
                 class="placeholder-cross"
                 viewBox="0 0 100 100"
@@ -17,28 +15,27 @@
 </template>
 
 <style scoped>
-.banner {
-    position: absolute;
-    inset: 0;
-}
+    .banner {
+        background-color: #747b83;
+    }
 
-.banner-placeholder {
-    position: absolute;
-    inset: 0;
+    .banner-placeholder {
+        position: absolute;
+        inset: 0;
 
-    background: #888c99;
-}
+        background: #888c99;
+    }
 
-.placeholder-cross {
-    position: absolute;
-    inset: 0;
+    .placeholder-cross {
+        position: absolute;
+        inset: 0;
 
-    width: 100%;
-    height: 100%;
-}
+        width: 100%;
+        height: 100%;
+    }
 
-.placeholder-cross line {
-    stroke: #747b83;
-    stroke-width: 0.2;
-}
+    .placeholder-cross line {
+        stroke: #747b83;
+        stroke-width: 0.2;
+    }
 </style>

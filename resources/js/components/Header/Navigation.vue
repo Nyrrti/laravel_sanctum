@@ -3,35 +3,35 @@
 </script>
 
 <template>
-    <nav class="grid-container-fluid nav-bar">
+    <nav class="grid-container-fluid navbar-gradient">
         <div class="grid-container max-width px-5 d-flex justify-end">
             <router-link :to="{name: 'homepage'}" class="nav">Home</router-link>
+            <router-link :to="{name: 'homepage'}" class="nav">Place</router-link>
+            <router-link :to="{name: 'homepage'}" class="nav">Holder</router-link>
         </div>
     </nav>
 </template>
 
 <style scoped>
 
-.nav-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    z-index: 10;
-}
+    a.nav {
+        color: var(--font-color-nav);
+        font-size: var(--font-size-lg);
+        min-width: 5rem;
+        padding: 1rem 1.1rem;
+        text-align: center;
+    }
 
-a.nav {
-    color: var(--font-color-nav);
-    min-width: 4.5rem;
-    padding: 0.9rem 1.1rem;
-    text-align: center;
-}
+    a.nav:hover {
+        color: #cbdbff;
+    }
 
-a.nav:hover {
-    color: #252e97;
-}
+    .navbar-gradient {
+        background: linear-gradient(
+            to top,
+            rgba(35, 42, 96, 0.25) 0%,
+            rgba(35, 42, 96, 0) 100%
+        );
+    }
 
 </style>

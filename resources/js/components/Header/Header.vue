@@ -2,28 +2,46 @@
 import TopBar from './TopBar.vue'
 import Banner from './Banner.vue'
 import Navigation from './Navigation.vue'
+import LoginBar from '../../Domains/Auth/components/LoginBar.vue';
 </script>
 
 <template>
-    <header class="header">
+
+    <div class="header">
         <Banner />
         <TopBar />
-        <Navigation />
-    </header>
+
+        <div class="banner-content">
+            <Navigation />
+        </div>
+        
+        <LoginBar />
+    </div>
+
+
 </template>
 
 <style scoped>
-.header {
-    position: relative;
-    height: 30rem;
-    overflow: hidden;
-}
 
-.banner {
-    position: absolute;
-    inset: 0;
-    background: #9195a0;
-}
+    .header {
+        position: relative;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .banner-content {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .header > :not(:first-child) {
+        position: relative;
+        z-index: 1;
+    }
+
 </style>
+  
+
 
 

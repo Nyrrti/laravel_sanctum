@@ -5,8 +5,8 @@
 <template>
     <div class="grid-container-fluid top-bar items-center">
         <div class="grid-container max-width px-5">
-            <div class="col-6">
-                <h1 class="title-light">
+            <div class="col-6 border-block-left sub-title-group ps-1">
+                <h1 class="sub-title title-light">
                     Website Title
                 </h1>
                 <h3 class="sub-title">
@@ -14,8 +14,10 @@
                 </h3>  
             </div>
             <div class="col-6 d-flex justify-end items-center">
-                <div class="placeholder-block">
-
+                <div class="placeholder-block d-flex items-center justify-center">
+                    <p class="small">
+                        Placeholder
+                    </p>
                 </div>
             </div>
         </div>
@@ -24,19 +26,28 @@
 
 <style scoped>
 
-.top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6rem;
-    background-color: rgba(35, 42, 96, 0.7);
-}
+    h1.sub-title {
+        line-height: 1.15rem;
+    }
 
-.placeholder-block {
-    background-color: var(--color-yellow);
-    width: 7rem;
-    height: 2.5rem;
-}
+    .top-bar {
+        height: 5.5rem;
+        background-color: var(--bg-color-nav);
+    }
 
+    .placeholder-block {
+        background-color: var(--color-yellow);
+        width: 7rem;
+        height: 2.5rem;
+    }
+
+    @media (min-width: 1600px) {
+        .top-bar {
+            height: 6.5rem;
+        }
+
+        h1.sub-title {
+            line-height: 1.5rem;
+        }
+    }
 </style>
