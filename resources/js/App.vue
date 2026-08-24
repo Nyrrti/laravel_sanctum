@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Header from './components/Header/Header.vue';
+    import Header from './components/Header/Header.vue';
 
 </script>
 
@@ -9,5 +9,4 @@ import Header from './components/Header/Header.vue';
     <main>
         <router-view></router-view>
     </main>
-    
 </template>

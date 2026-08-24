@@ -1,9 +1,19 @@
 <script setup>
     import { ref } from 'vue'
+    import axios from 'axios';
 
     const email = ref('')
     const password = ref('')
     const remember = ref(false)
+
+    async function login() {
+        await axios.get("/sanctum/csrf-cookie");
+
+        await axios.post('/login', {
+            email: email.value,
+            password: password.value,
+        });
+    }
 </script>
 
 <template>
