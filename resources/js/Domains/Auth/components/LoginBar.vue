@@ -21,12 +21,7 @@
 <style>
     .bg-bar {
         background-color: var(--bg-color-nav);
-        height: 8.1rem;
+        height: var(--bar-height);
     }
 
-    @media (min-width: 1600px) {
-        .bg-bar {
-            height: 10.1rem;
-        }
-    }
 </style>
