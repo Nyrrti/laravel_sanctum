@@ -20,13 +20,13 @@
 
 <style>
     .bg-bar {
-        background-color: var(--bg-color-header);
-        height: 11.5rem;
+        background-color: var(--bg-color-nav);
+        height: 8.3rem;
     }
 
     @media (min-width: 1600px) {
         .bg-bar {
-            height: 15rem;
+            height: 10.3rem;
         }
     }
 </style>

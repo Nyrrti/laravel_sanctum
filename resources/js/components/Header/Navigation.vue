@@ -4,10 +4,8 @@
 
 <template>
     <nav class="grid-container-fluid navbar-gradient">
-        <div class="grid-container max-width px-5 d-flex justify-end">
+        <div class="grid-container max-width px-5 d-flex justify-start">
             <router-link :to="{name: 'homepage'}" class="nav">Home</router-link>
-            <router-link :to="{name: 'homepage'}" class="nav">Place</router-link>
-            <router-link :to="{name: 'homepage'}" class="nav">Holder</router-link>
         </div>
     </nav>
 </template>
@@ -29,7 +27,7 @@
     .navbar-gradient {
         background: linear-gradient(
             to top,
-            rgba(35, 42, 96, 0.25) 0%,
+            rgba(35, 42, 96, 0.3) 0%,
             rgba(35, 42, 96, 0) 100%
         );
     }

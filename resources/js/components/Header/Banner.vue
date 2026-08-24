@@ -1,6 +1,6 @@
 <template>
     <div class="grid-container-fluid banner text-center">
-        <div class="banner-placeholder">
+        <!-- <div class="banner-placeholder">
             <svg
                 class="placeholder-cross"
                 viewBox="0 0 100 100"
@@ -10,13 +10,19 @@
                 <line x1="0" y1="0" x2="100" y2="100" />
                 <line x1="100" y1="0" x2="0" y2="100" />
             </svg>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <style scoped>
     .banner {
+        position: absolute;
+        inset: 0;
         background-color: #747b83;
+        background-image: url(../../../../public/images/black-dragon-by-nyrrti-1080.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .banner-placeholder {

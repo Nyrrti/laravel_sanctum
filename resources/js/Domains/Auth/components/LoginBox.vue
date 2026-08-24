@@ -7,51 +7,52 @@
 </script>
 
 <template>
-  <div class="login-bar">
-        <span class="bar-label">
-            <h5 class="title">
-                Sign In
-            </h5>
-            <a href="#" class="bar-link">Sign up</a>
-        </span>
-    
-    <input
-      v-model="email"
-      type="email"
-      class="bar-input"
-      placeholder="Email"
-    />
+        <div class="login-box justify-center">
+            <span class="bar-label">
+                <h5 class="title">
+                    Sign In
+                </h5>
+                <a href="#" class="bar-link">Sign up</a>
+            </span>
+        
+        <input
+        v-model="email"
+        type="email"
+        class="bar-input"
+        placeholder="Email"
+        />
 
-    <input
-      v-model="password"
-      type="password"
-      class="bar-input"
-      placeholder="Password"
-    />
+        <input
+        v-model="password"
+        type="password"
+        class="bar-input"
+        placeholder="Password"
+        />
+        <div class="bottom-row">
+        <label class="remember">
+            <input type="checkbox" v-model="remember" />
+            Remember
+        </label>
 
-    <div class="bottom-row">
-      <label class="remember">
-        <input type="checkbox" v-model="remember" />
-        Remember
-      </label>
-
-      <button type="button" class="bar-btn">Log in</button>
+        <button type="button" class="bar-btn">Log in</button>
+        </div>
     </div>
-
-    
-  </div>
 </template>
 
 <style scoped>
-    .login-bar {
+    .login-box {
         --scale: 1;
         display: flex;
         flex-direction: column;
         gap: calc(0.5rem * var(--scale));
-        background: var(--bg-color-header);
-        border-radius: 0.5rem;
-        padding: calc(0.8rem * var(--scale));
+        background: var(--bg-color-dark);
+        border-radius: 0.5rem 0.5rem 0rem 0rem;
+        border-top: 2px solid var(--color-yellow);
+        padding: calc(1rem * var(--scale));
         width: calc(14rem * var(--scale));
+        height: calc(9.5rem * var(--scale));
+        position: absolute;
+        bottom: 0px;
     }
 
     .bar-label {
@@ -68,7 +69,7 @@
     .bar-input {
         padding: calc(0.4rem * var(--scale)) calc(0.6rem * var(--scale));
         border: 1px solid #0d1a2e;
-        background-color: var(--bg-color-nav);
+        background-color: #0b1c40;
         color: var(--font-color-light);
         border-radius: 0.3rem;
         font-size: calc(0.8rem * var(--scale));
@@ -132,7 +133,7 @@
     }
 
     @media (min-width: 1600px) {
-        .login-bar {
+        .login-box {
             --scale: 1.2;
         }
     }
