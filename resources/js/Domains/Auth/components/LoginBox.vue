@@ -1,51 +1,117 @@
-<script setup>
-    import { ref } from 'vue'
-    import axios from 'axios';
+<script setup lang="ts">
+    import { onMounted, ref } from "vue";
+    import axios from "axios";
 
-    const email = ref('')
-    const password = ref('')
+    const email = ref("")
+    const password = ref("")
     const remember = ref(false)
 
-    async function login() {
-        await axios.get("/sanctum/csrf-cookie");
+        type User = {
+        name: string;
+        email: string;
+        is_admin: boolean;
+    };
 
-        await axios.post('/login', {
-            email: email.value,
-            password: password.value,
-        });
+    const user = ref<User | null>(null);
+
+    async function login() {
+        try {
+            await axios.get("/sanctum/csrf-cookie");
+
+            await axios.post("/login", {
+                email: email.value,
+                password: password.value,
+            });
+
+            await getUser();
+            console.log("Login successful");
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
     }
+
+    async function logout() {
+        try {
+            await axios.post("/api/logout");
+            console.log("Logout successful");
+            user.value = null;
+        } catch (error) {
+            console.error("Logout failed:", error);
+        }
+    }
+
+    async function getUser() {
+        try {
+            const response = await axios.get("/api/me");
+
+            user.value = response.data;
+        } catch (error) {
+            if (axios.isAxiosError(error) && error.response?.status === 401) {
+                user.value = null;
+                return;
+            }
+
+            console.error("Could not get user:", error);
+        }
+    }
+
+    onMounted(() => {
+        getUser();
+    });
+
 </script>
 
 <template>
-        <div class="login-box justify-center">
+    <div class="login-box justify-center">
+
+        <template v-if="user === null">
             <span class="bar-label">
                 <h5 class="title">
                     Sign In
                 </h5>
                 <a href="#" class="bar-link">Sign up</a>
             </span>
-        
-        <input
-        v-model="email"
-        type="email"
-        class="bar-input"
-        placeholder="Email"
-        />
 
-        <input
-        v-model="password"
-        type="password"
-        class="bar-input"
-        placeholder="Password"
-        />
-        <div class="bottom-row">
-        <label class="remember">
-            <input type="checkbox" v-model="remember" />
-            Remember
-        </label>
+            <input
+                v-model="email"
+                type="email"
+                class="bar-input"
+                placeholder="Email"
+            />
 
-        <button type="button" class="bar-btn">Log in</button>
-        </div>
+            <input
+                v-model="password"
+                type="password"
+                class="bar-input"
+                placeholder="Password"
+            />
+
+            <div class="bottom-row">
+                <label class="remember">
+                    <input type="checkbox" v-model="remember" />
+                    Remember
+                </label>
+
+                <button type="button" class="bar-btn" @click="login">
+                    Log in
+                </button>
+            </div>
+        </template>
+
+        <template v-else>
+            <span class="bar-label">
+                <h5 class="title">
+                    Welcome, {{ user.name }}
+                </h5>
+            </span>
+
+            <p class="light">{{ user.email }}</p>
+
+            <button type="button" class="bar-btn" @click="logout">
+                Log out
+            </button>
+        </template>
+
     </div>
 </template>
 

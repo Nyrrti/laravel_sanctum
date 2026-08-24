@@ -4,10 +4,10 @@
 
 <template>
     <div class="grid-container-fluid bg-bar items-center">
-        <div class="grid-container max-width">
+        <div class="grid-container max-width px-4">
             <div class="col-6">
-                <h1 class="light">
-                    Left
+                <h1 class="color">
+                    Welcome!
                 </h1>
             </div>
             <div class="col-6 d-flex justify-end">
