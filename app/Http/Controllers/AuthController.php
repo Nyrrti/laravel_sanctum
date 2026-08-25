@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login(Request $request) 
+    public function login(LoginRequest $request) 
     {
-        $credentials = $request->validate([
-            "email" => ["required", "email"],
-            "password" => ["required"],
-        ]);   
+        $credentials = $request->validated();
         
         if(!Auth::attempt($credentials)) {
             throw ValidationException::withMessages([
-                "email" => ['The provided credentials are incorrect.'],
+                // field => error message
+                "email" => [__("auth.failed")],
             ]);
         }
 

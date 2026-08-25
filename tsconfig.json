@@ -4,7 +4,7 @@
         "module": "esnext",
         "target": "esnext",
         "types": ["vite/client", "node"],
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "lib": ["es2017", "dom"],
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
