@@ -1,35 +1,44 @@
 <script setup lang="ts">
     import { onMounted, ref } from "vue";
     import axios from "axios";
+    import type { User } from "./types";
 
-    const email = ref("")
-    const password = ref("")
-    const remember = ref(false)
+    const email = ref("");
+    const password = ref("");
+    const remember = ref(false);
 
-        type User = {
-        name: string;
-        email: string;
-        is_admin: boolean;
-    };
+    const success_msg = ref("");
+    const errors = ref("");
 
     const user = ref<User | null>(null);
 
+    /**
+     * Login
+     */
     async function login() {
+        success_msg.value = "";
+        errors.value = "";
         try {
             await axios.get("/sanctum/csrf-cookie");
 
-            await axios.post("/login", {
+            const response = await axios.post("/login", {
                 email: email.value,
                 password: password.value,
             });
 
             await getUser();
-            console.log("Login successful");
+
+            success_msg.value = response.data.message;
         } catch (error) {
-            console.error("Login failed:", error);
+            if (axios.isAxiosError(error)) {
+                errors.value = error.response?.data.errors;
+            }
         }
     }
 
+    /**
+     * Logout
+     */
     async function logout() {
         try {
             await axios.post("/api/logout");
@@ -40,9 +49,12 @@
         }
     }
 
+    /**
+     * Get the current logged in user
+     */
     async function getUser() {
         try {
-            const response = await axios.get("/api/me");
+            const response = await axios.get("/api/user");
 
             user.value = response.data;
         } catch (error) {
@@ -71,27 +83,29 @@
                 </h5>
                 <a href="#" class="bar-link">Sign up</a>
             </span>
-
             <input
                 v-model="email"
                 type="email"
                 class="bar-input"
                 placeholder="Email"
             />
-
+            <span class="error-msg">
+                {{ errors.email?.[0] }}
+            </span>
             <input
                 v-model="password"
                 type="password"
                 class="bar-input"
                 placeholder="Password"
             />
-
+            <span class="error-msg">
+                {{ errors.password?.[0] }}
+            </span>
             <div class="bottom-row">
                 <label class="remember">
                     <input type="checkbox" v-model="remember" />
                     Remember
                 </label>
-
                 <button type="button" class="bar-btn" @click="login">
                     Log in
                 </button>
@@ -100,9 +114,15 @@
 
         <template v-else>
             <div class="profile-top border-bottom">
-                <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
-                <h5 class="title">{{ user.name }}</h5>
-                <span v-if="user.is_admin" class="admin-badge">Admin</span>
+                <div class="avatar">
+                    {{ user.name.charAt(0).toUpperCase() }}
+                </div>
+                <h5 class="title">
+                    {{ user.name }}
+                </h5>
+                <span v-if="user.is_admin" class="admin-badge">
+                    Admin
+                </span>
             </div>
 
             <p class="email py-2">
@@ -119,6 +139,14 @@
 </template>
 
 <style scoped>
+
+    .error-msg {
+        color: #f41c1c;
+        font-size: 0.8rem;
+        line-height: 0.8rem;
+        letter-spacing: 0.015rem;
+    }
+
     .login-box {
         --scale: 1;
         display: flex;

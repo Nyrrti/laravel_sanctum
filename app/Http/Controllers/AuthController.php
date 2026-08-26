@@ -9,6 +9,11 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Login User - Check if login data match and if so login, if it fails deny entry and give a error
+     * 
+     * @param LoginRequest - Form request Pre-checks login input values
+     */
     public function login(LoginRequest $request) 
     {
         $credentials = $request->validated();
@@ -22,11 +27,14 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
         return response()->json([
-            'message' => 'Logged in successfully',
+            'message' => __("auth.login_success"),
         ]);
 
     }
 
+    /**
+     * Logout user
+     */
     public function logout(Request $request)
     {
         
@@ -34,7 +42,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return response()->json([
-            'message' => 'Logged out successfully',
+            'message' => __("auth.logout_success"),
         ]);
     }
 }
