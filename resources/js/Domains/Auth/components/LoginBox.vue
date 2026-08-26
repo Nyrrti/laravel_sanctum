@@ -2,22 +2,29 @@
     import { onMounted, ref } from "vue";
     import axios from "axios";
     import type { User } from "./types";
+    import FormError from "../../../components/Error/FormError.vue";
 
     const email = ref("");
     const password = ref("");
     const remember = ref(false);
 
     const success_msg = ref("");
-    const errors = ref("");
+    const error_msg = ref("");
+    const errors = ref<Record<string, string[]>>({});
 
     const user = ref<User | null>(null);
+
+    function getError(fieldName: string) {
+        return errors.value[fieldName]?.[0] ?? "";
+    } 
 
     /**
      * Login
      */
     async function login() {
         success_msg.value = "";
-        errors.value = "";
+        error_msg.value = "";
+        errors.value = {};
         try {
             await axios.get("/sanctum/csrf-cookie");
 
@@ -29,9 +36,16 @@
             await getUser();
 
             success_msg.value = response.data.message;
+
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                errors.value = error.response?.data.errors;
+                if (error.response?.status === 422) {
+                    errors.value = error.response?.data.errors;
+                }
+
+                if (error.response?.status === 401) {
+                    error_msg.value = error.response?.data.message ?? "";
+                }
             }
         }
     }
@@ -89,18 +103,15 @@
                 class="bar-input"
                 placeholder="Email"
             />
-            <span class="error-msg">
-                {{ errors.email?.[0] }}
-            </span>
+            <FormError :message="getError('email')"/>
             <input
                 v-model="password"
                 type="password"
                 class="bar-input"
                 placeholder="Password"
             />
-            <span class="error-msg">
-                {{ errors.password?.[0] }}
-            </span>
+            <FormError :message="getError('password')"/>
+            <FormError :message="error_msg"/>
             <div class="bottom-row">
                 <label class="remember">
                     <input type="checkbox" v-model="remember" />
@@ -139,13 +150,6 @@
 </template>
 
 <style scoped>
-
-    .error-msg {
-        color: #f41c1c;
-        font-size: 0.8rem;
-        line-height: 0.8rem;
-        letter-spacing: 0.015rem;
-    }
 
     .login-box {
         --scale: 1;

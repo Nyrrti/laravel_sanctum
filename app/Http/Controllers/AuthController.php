@@ -19,10 +19,10 @@ class AuthController extends Controller
         $credentials = $request->validated();
         
         if(!Auth::attempt($credentials)) {
-            throw ValidationException::withMessages([
-                // field => error message
-                "email" => [__("auth.failed")],
-            ]);
+            // field => error message
+            return response()->json([
+                "message" => __("auth.failed"),
+            ], 401);   
         }
 
         $request->session()->regenerate();
